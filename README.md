@@ -6,7 +6,7 @@
 
 # Django Skeleton
 **Quickstart**
-`django-admin startapp --template=https://github.com/domlysi/django-app-skeleton/archive/master.zip -e py,ini,yml -n Makefile [appname] `
+`django-admin startapp --template=https://github.com/domlysi/django-app-skeleton/archive/master.zip -e py,ini,yml,in -n Makefile [appname] `
 
 > Subtitle or Short Description Goes Here
 
