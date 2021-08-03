@@ -11,6 +11,8 @@ class AppSettings:
     properties. For example:
         from app_name.settings import app_settings
         print(app_settings.DEFAULT_NAME)
+        
+    Based on Django Rest Framework settings.py
     """
     def __init__(self, user_settings=None, defaults=None):
         if user_settings:
