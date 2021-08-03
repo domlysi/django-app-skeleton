@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test.signals import setting_changed
 
 
@@ -13,7 +14,7 @@ class AppSettings:
     """
     def __init__(self, user_settings=None, defaults=None):
         if user_settings:
-            self._user_settings = self.__check_user_settings(user_settings)
+            self._user_settings = user_settings
         self.defaults = defaults or DEFAULTS
         self._cached_attrs = set()
 
@@ -33,6 +34,12 @@ class AppSettings:
         setattr(self, attr, val)
         return val
 
+    @property
+    def user_settings(self):
+        if not hasattr(self, '_user_settings'):
+            self._user_settings = getattr(settings, 'CHANGE_ME', {})
+        return self._user_settings
+
     def reload(self):
         for attr in self._cached_attrs:
             delattr(self, attr)
@@ -44,7 +51,7 @@ app_settings = AppSettings(None, DEFAULTS)
 
 def reload_app_settings(*args, **kwargs):
     setting = kwargs['setting']
-    if setting == 'VERSIONING':
+    if setting == 'CHANGE_ME':
         app_settings.reload()
 
 
