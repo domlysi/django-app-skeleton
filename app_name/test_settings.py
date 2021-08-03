@@ -19,10 +19,6 @@ LANGUAGES = (
     ('en-us', 'English'),
 )
 
-CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
-]
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
